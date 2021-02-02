@@ -1,0 +1,5 @@
+.idea
+.vs
+**/.workspace.xml
+**/bin
+**/obj

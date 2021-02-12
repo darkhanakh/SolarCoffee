@@ -14,6 +14,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using SolarCoffee.Data;
 using SolarCoffee.Data.Models;
+using SolarCoffee.Services.Customer;
+using SolarCoffee.Services.Inventory;
+using SolarCoffee.Services.Order;
 using SolarCoffee.Services.Product;
 
 namespace SolarCoffee.Web
@@ -41,8 +44,11 @@ namespace SolarCoffee.Web
                 opts.EnableDetailedErrors();
                 opts.UseNpgsql(Configuration.GetConnectionString("solar.dev"));
             });
-
+            
             services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IInventoryService, InventoryService>();
+            services.AddTransient<IOrderService, OrderService>();
+            services.AddTransient<ICustomerService, CustomerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
